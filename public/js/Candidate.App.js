@@ -1,6 +1,23 @@
 const app = angular.module("Candidate.App", []);
 
 app.component("itmRoot", {
+    controller: class {
+        constructor() {
+            this.candidates = [{ name: "Puppies", votes: 10 }, { name: "Kittens", votes: 12 }, { name: "Gerbils", votes: 7 }];
+        }
+
+        onVote(candidate) {
+            console.log(`Vote for ${candidate.name}`);
+        }
+
+        onAddCandidate(candidate) {
+            console.log(`Added candidate ${candidate.name}`);
+        }
+
+        onRemoveCandidate(candidate) {
+            console.log(`Removed candidate ${candidate.name}`);
+        }
+    },
     template: `
         <h1>Which candidate brings the most joy?</h1>
              
@@ -18,24 +35,7 @@ app.component("itmRoot", {
             on-add="$ctrl.onAddCandidate($candidate)"
             on-remove="$ctrl.onRemoveCandidate($candidate)">
         </itm-management>
-    `,
-    controller: class {
-        constructor() {
-            this.candidates = [{ name: "Puppies", votes: 10 }, { name: "Kittens", votes: 12 }, { name: "Gerbils", votes: 7 }];
-        }
-
-        onVote(candidate) {
-            console.log(`Vote for ${candidate.name}`);
-        }
-
-        onAddCandidate(candidate) {
-            console.log(`Added candidate ${candidate.name}`);
-        }
-
-        onRemoveCandidate(candidate) {
-            console.log(`Removed candidate ${candidate.name}`);
-        }
-    }
+    `
 });
 
 app.component("itmManagement", {
@@ -43,6 +43,21 @@ app.component("itmManagement", {
         candidates: "<",
         onAdd: "&",
         onRemove: "&"
+    },
+    controller: class {
+        constructor() {
+            this.newCandidate = {
+                name: ""
+            };
+        }
+
+        submitCandidate(candidate) {
+            this.onAdd({ $candidate: candidate });
+        }
+
+        removeCandidate(candidate) {
+            this.onRemove({ $candidate: candidate });
+        }
     },
     template: `
         <h2>Manage Candidates</h2>
@@ -64,22 +79,7 @@ app.component("itmManagement", {
             </li>
         </ul>
 
-    `,
-    controller: class {
-        constructor() {
-            this.newCandidate = {
-                name: ""
-            };
-        }
-
-        submitCandidate(candidate) {
-            this.onAdd({ $candidate: candidate });
-        }
-
-        removeCandidate(candidate) {
-            this.onRemove({ $candidate: candidate });
-        }
-    }
+    `
 });
 
 app.component("itmVote", {
@@ -87,6 +87,7 @@ app.component("itmVote", {
         candidates: "<",
         onVote: "&"
     },
+    controller: class {},
     template: `
         <h2>Cast your vote!</h2>
 
@@ -95,14 +96,14 @@ app.component("itmVote", {
             ng-click="$ctrl.onVote({ $candidate: candidate })">
             <span ng-bind="candidate.name"></span>
         </button>
-    `,
-    controller: class {}
+    `
 });
 
 app.component("itmResults", {
     bindings: {
         candidates: "<"
     },
+    controller: class {},
     template: `
         <h2>Live Results</h2>
         <ul>
@@ -111,6 +112,5 @@ app.component("itmResults", {
                 <strong ng-bind="candidate.votes"></strong>
             </li>
         </ul>
-    `,
-    controller: class {}
+    `
 });

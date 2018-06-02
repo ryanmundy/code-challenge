@@ -28,7 +28,7 @@ The app represents an online poll for candidates initially chosen from Puppies, 
 
 *   Adding a custom CSS file or stylings
 *   Adding additional properties to the Candidate object like a color or description.
-*   Adding
+*   Adding something that doesn't contribute directly to the app but gives us an idea of your talents.
 
 ### Things we like to see
 

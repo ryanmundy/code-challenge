@@ -8,6 +8,10 @@
     },
     "author": "ITM21st",
     "license": "UNLICENCED",
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/twentyfirst/code-challenge"
+    },
     "dependencies": {
         "express": "^4.16.3"
     }

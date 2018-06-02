@@ -6,6 +6,14 @@ The challenge app is an AngularJS front end with an NodeJS express server for st
 
 The app represents an online poll for candidates initially chosen from Puppies, Kittens and Gerbils. A user can view voting results, cast votes for a candidate, or add/remove candidates from the race.
 
+### To Run the app
+
+1.  Clone the app from [Bitbucket](https://bitbucket.org/twentyfirst/code-challenge)
+2.  Open the app in your favorite code editor. We recommend [VS Code](https://code.visualstudio.com/). If you don't like to use an IDE, you can run the following commands from a command line. Just make your checkout directory the working directory.
+3.  Run `npm install` to install express.js which is used to run the demo server
+4.  Run the app in the IDE or run `npm start` manually. This will start the server which serves up the static files in the /public directory.
+5.  Navigate to http://localhost:3000 to see the app running.
+
 ### Please implement the following features:
 
 *   Display the proportion of the vote that each candidate has in the Live Results section. For example, if there are 2 candidates and Candidate A has 10 votes and Candidate B has 30 votes, then Candidate A would have 25% of the vote and Candidate B would have 75% of the vote.

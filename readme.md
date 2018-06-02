@@ -37,4 +37,4 @@ The app represents an online poll for candidates initially chosen from Puppies, 
 *   Demonstrated understanding of HTML, JS or CSS concepts and best-practices.
     *   HTML: use more than `<div>` tags to demonstrate tag semantics.
     *   JS: Avoid global variables and show off skills with es6 features or Array.prototype methods like `map`, `filter` or `forEach`.
-    *   CSS: Use a well-docmented library like [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) or add your own style sheet to suit your preferences.
+    *   CSS: Use a well-known library like [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) or add your own style sheet to suit your preferences.

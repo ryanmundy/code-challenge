@@ -8,11 +8,12 @@ The app represents an online poll for candidates initially chosen from Puppies, 
 
 ### To Run the app
 
-1.  Clone the app from [Bitbucket](https://bitbucket.org/twentyfirst/code-challenge)
-2.  Open the app in your favorite code editor. We recommend [VS Code](https://code.visualstudio.com/). If you don't like to use an IDE, you can run the following commands from a command line. Just make your checkout directory the working directory.
-3.  Run `npm install` to install express.js which is used to run the demo server
-4.  Run the app in the IDE or run `npm start` manually. This will start the server which serves up the static files in the /public directory.
-5.  Navigate to http://localhost:3000 to see the app running.
+1.  Download and install [Node.js](https://nodejs.org). Install a version >= 8.0.0. Along with Node.js, NPM will be installed which you need for step 4.
+2.  Clone the app from [Bitbucket](https://bitbucket.org/twentyfirst/code-challenge)
+3.  Open the app in your favorite code editor. We recommend [VS Code](https://code.visualstudio.com/). If you don't like to use an IDE, you can run the following commands from a command line. Just make your checkout directory the working directory.
+4.  Run `npm install` to install express.js which is used to run the demo server
+5.  Run the app in the IDE or run `npm start` manually. This will start the server which serves up the static files in the /public directory.
+6.  Navigate to http://localhost:3000 to see the app running.
 
 ### Implement the following features:
 

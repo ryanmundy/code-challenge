@@ -8,7 +8,15 @@ app.component("itmRoot", {
 
         onVote(candidate) {
             console.log(`Vote for ${candidate.name}`);
+            //adds to vote totals on click of candidate
             candidate.votes = candidate.votes + 1;
+            //loop over totals and calculate percentage of votes
+            let totalVotes = 0;
+            for(candidate of this.candidates){
+                totalVotes = totalVotes + candidate.votes;
+            }
+            console.log(totalVotes);
+            
         }
 
         onAddCandidate(candidate) {

@@ -20,18 +20,19 @@ app.component("itmRoot", {
             }
             //loop over candidates and calculate percentage of total
             for (candidate of this.candidates) {
-                candidate.percentage = `${(candidate.votes / totalVotes) * 100}%`;
+                candidate.percentage = `${(candidate.votes / totalVotes) * 100}% of total`;
             }
-            console.log(totalVotes);
-
         }
 
         onAddCandidate(candidate) {
             console.log(`Added candidate ${candidate.name}`);
+            //add new candidate to candidate array using constructor
+            this.candidates.push(candidate)
         }
 
         onRemoveCandidate(candidate) {
             console.log(`Removed candidate ${candidate.name}`);
+
         }
     },
     template: `
@@ -63,7 +64,9 @@ app.component("itmManagement", {
     controller: class {
         constructor() {
             this.newCandidate = {
-                name: ""
+                name: "",
+                votes: 0,
+                percentage: ''
             };
         }
 

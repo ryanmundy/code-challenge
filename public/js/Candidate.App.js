@@ -8,6 +8,7 @@ app.component("itmRoot", {
 
         onVote(candidate) {
             console.log(`Vote for ${candidate.name}`);
+            candidate.votes = candidate.votes + 1;
         }
 
         onAddCandidate(candidate) {

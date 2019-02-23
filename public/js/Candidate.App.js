@@ -32,7 +32,12 @@ app.component("itmRoot", {
 
         onRemoveCandidate(candidate) {
             console.log(`Removed candidate ${candidate.name}`);
-
+            //loop over candidates and delete candidate that matches selection
+            for (let i = 0; i < this.candidates.length; i++) {
+                if(candidate.name === this.candidates[i].name){
+                    this.candidates.splice(i, 1)
+                }
+            }
         }
     },
     template: `

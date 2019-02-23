@@ -1,22 +1,29 @@
 const app = angular.module("Candidate.App", []);
 
+
+
+
 app.component("itmRoot", {
     controller: class {
         constructor() {
-            this.candidates = [{ name: "Puppies", votes: 10 }, { name: "Kittens", votes: 12 }, { name: "Gerbils", votes: 7 }];
+            this.candidates = [{ name: "Puppies", votes: 0, percentage: 0 }, { name: "Kittens", votes: 0, percentage: 0 }, { name: "Gerbils", votes: 0, percentage: 0 }];
         }
 
         onVote(candidate) {
             console.log(`Vote for ${candidate.name}`);
             //adds to vote totals on click of candidate
             candidate.votes = candidate.votes + 1;
-            //loop over totals and calculate percentage of votes
+            //loop over candidates and add to total count
             let totalVotes = 0;
-            for(candidate of this.candidates){
+            for (candidate of this.candidates) {
                 totalVotes = totalVotes + candidate.votes;
             }
+            //loop over candidates and calculate percentage of total
+            for (candidate of this.candidates) {
+                candidate.percentage = (candidate.votes / totalVotes) * 100;
+            }
             console.log(totalVotes);
-            
+
         }
 
         onAddCandidate(candidate) {
@@ -96,7 +103,7 @@ app.component("itmVote", {
         candidates: "<",
         onVote: "&"
     },
-    controller: class {},
+    controller: class { },
     template: `
         <h2>Cast your vote!</h2>
 
@@ -112,13 +119,14 @@ app.component("itmResults", {
     bindings: {
         candidates: "<"
     },
-    controller: class {},
+    controller: class { },
     template: `
         <h2>Live Results</h2>
         <ul>
             <li ng-repeat="candidate in $ctrl.candidates">
                 <span ng-bind="candidate.name"></span>
                 <strong ng-bind="candidate.votes"></strong>
+                <strong ng-bind="candidate.percentage"></strong>
             </li>
         </ul>
     `

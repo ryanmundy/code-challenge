@@ -6,7 +6,7 @@ const app = angular.module("Candidate.App", []);
 app.component("itmRoot", {
     controller: class {
         constructor() {
-            this.candidates = [{ name: "Puppies", votes: 0, percentage: 0 }, { name: "Kittens", votes: 0, percentage: 0 }, { name: "Gerbils", votes: 0, percentage: 0 }];
+            this.candidates = [{ name: "Puppies", votes: 0, percentage: '' }, { name: "Kittens", votes: 0, percentage: '' }, { name: "Gerbils", votes: 0, percentage: '' }];
         }
 
         onVote(candidate) {
@@ -20,7 +20,7 @@ app.component("itmRoot", {
             }
             //loop over candidates and calculate percentage of total
             for (candidate of this.candidates) {
-                candidate.percentage = (candidate.votes / totalVotes) * 100;
+                candidate.percentage = `${(candidate.votes / totalVotes) * 100}%`;
             }
             console.log(totalVotes);
 
@@ -123,7 +123,7 @@ app.component("itmResults", {
     template: `
         <h2>Live Results</h2>
         <ul>
-            <li ng-repeat="candidate in $ctrl.candidates">
+            <li ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
                 <span ng-bind="candidate.name"></span>
                 <strong ng-bind="candidate.votes"></strong>
                 <strong ng-bind="candidate.percentage"></strong>

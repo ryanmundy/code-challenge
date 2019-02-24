@@ -1,8 +1,5 @@
 const app = angular.module("Candidate.App", []);
 
-
-
-
 app.component("itmRoot", {
     controller: class {
         constructor() {
@@ -28,6 +25,8 @@ app.component("itmRoot", {
             console.log(`Added candidate ${candidate.name}`);
             //add new candidate to candidate array using constructor
             this.candidates.push(candidate)
+            console.log(this.candidates);
+            
         }
 
         onRemoveCandidate(candidate) {
@@ -77,6 +76,11 @@ app.component("itmManagement", {
 
         submitCandidate(candidate) {
             this.onAdd({ $candidate: candidate });
+            this.newCandidate = {
+                name: "",
+                votes: 0,
+                percentage: ''
+            };
         }
 
         removeCandidate(candidate) {
@@ -87,7 +91,7 @@ app.component("itmManagement", {
         <h2>Manage Candidates</h2>
 
         <h3>Add New Candidate</h3>
-        <form ng-submit="$ctrl.submitCandidate($ctrl.newCandidate)" novalidate>
+        <form ng-submit="$ctrl.submitCandidate($ctrl.newCandidate)" >
 
             <label>Candidate Name</label>
             <input type="text" ng-model="$ctrl.newCandidate.name" required>

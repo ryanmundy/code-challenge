@@ -23,17 +23,25 @@ app.component("itmRoot", {
 
         onAddCandidate(candidate) {
             console.log(`Added candidate ${candidate.name}`);
-            //add new candidate to candidate array using constructor
-            this.candidates.push(candidate)
-            console.log(this.candidates);
-            
+            //create array of candidate names
+            let candidatesToCheck = []
+            for (let i = 0; i < this.candidates.length; i++) {
+                candidatesToCheck.push(this.candidates[i].name)
+            }
+            //check if candidate name is already used
+            if (candidatesToCheck.includes(candidate.name)) {
+                alert('already exists')
+            } else {
+                //add new candidate to candidate array using constructor
+                this.candidates.push(candidate)
+            }
         }
 
         onRemoveCandidate(candidate) {
             console.log(`Removed candidate ${candidate.name}`);
             //loop over candidates and delete candidate that matches selection
             for (let i = 0; i < this.candidates.length; i++) {
-                if(candidate.name === this.candidates[i].name){
+                if (candidate.name === this.candidates[i].name) {
                     this.candidates.splice(i, 1)
                 }
             }
@@ -76,6 +84,7 @@ app.component("itmManagement", {
 
         submitCandidate(candidate) {
             this.onAdd({ $candidate: candidate });
+            //reset form data
             this.newCandidate = {
                 name: "",
                 votes: 0,

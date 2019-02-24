@@ -17,7 +17,7 @@ app.component("itmRoot", {
             }
             //loop over candidates and calculate percentage of total
             for (candidate of this.candidates) {
-                candidate.percentage = `${(candidate.votes / totalVotes) * 100}% of total`;
+                candidate.percentage = `${((candidate.votes / totalVotes) * 100).toFixed(2)}%`;
             }
         }
 
@@ -148,16 +148,6 @@ app.component("itmResults", {
         candidates: "<"
     },
     controller: class { },
-    // template: `
-    //     <h2>Live Results</h2>
-    //     <ul>
-    //         <li ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
-    //             <span ng-bind="candidate.name"></span>
-    //             <strong ng-bind="candidate.votes"></strong>
-    //             <strong ng-bind="candidate.percentage"></strong>
-    //         </li>
-    //     </ul>
-    // `
     template: `
         <h2>Live Results</h2>
         <table class="table table-striped table-hover" id="table">
@@ -165,7 +155,7 @@ app.component("itmResults", {
             <tr>
             <th scope="col">Name</th>
             <th scope="col">Votes</th>
-            <th scope="col">Percent</th>
+            <th scope="col">Percentage of Total</th>
             </tr>
         </thead>
         <tbody>

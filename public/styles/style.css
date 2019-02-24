@@ -1,0 +1,54 @@
+body{
+    background-color: lightgray;
+}
+
+.jumbotron{
+    background-color: rgb(0, 136, 255);
+    font-style: italic;
+    color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    margin: 20px;
+}
+
+form{
+text-align: center;
+}
+
+#table{
+    text-align: center;
+    width: 65%;
+    margin-top: 25px;
+    margin-left:auto; 
+    margin-right:auto;
+    margin-bottom: 25px;
+    border: solid black;
+}
+
+#button{
+    margin: 5px;
+    text-align: center;
+}
+
+li{
+    text-align: center;
+    list-style: none;
+}
+
+#border{
+    border: solid black;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}

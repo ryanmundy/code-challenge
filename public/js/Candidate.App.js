@@ -30,7 +30,7 @@ app.component("itmRoot", {
             }
             //check if candidate name is already used
             if (candidatesToCheck.includes(candidate.name)) {
-                alert('already exists')
+                alert('candidate name already used')
             } else {
                 //add new candidate to candidate array using constructor
                 this.candidates.push(candidate)
@@ -48,8 +48,9 @@ app.component("itmRoot", {
         }
     },
     template: `
+        <div class="jumbotron">
         <h1>Which candidate brings the most joy?</h1>
-             
+        </div>     
         <itm-results 
             candidates="$ctrl.candidates">
         </itm-results>
@@ -97,25 +98,27 @@ app.component("itmManagement", {
         }
     },
     template: `
+        
+        <div id="border">
         <h2>Manage Candidates</h2>
-
         <h3>Add New Candidate</h3>
+
         <form ng-submit="$ctrl.submitCandidate($ctrl.newCandidate)" >
 
             <label>Candidate Name</label>
             <input type="text" ng-model="$ctrl.newCandidate.name" required>
 
-            <button type="submit">Add</button>
+            <button type="submit" class="btn btn-secondary">Add</button>
         </form>
-
+        
         <h3>Remove Candidate</h3>
         <ul>
             <li ng-repeat="candidate in $ctrl.candidates">
                 <span ng-bind="candidate.name"></span>
-                <button type="button" ng-click="$ctrl.removeCandidate(candidate)">X</button>
+                <button id="button" class="btn btn-danger" type="button" ng-click="$ctrl.removeCandidate(candidate)">X</button>
             </li>
         </ul>
-
+        </div>
     `
 });
 
@@ -126,13 +129,17 @@ app.component("itmVote", {
     },
     controller: class { },
     template: `
+        <div id="border">
         <h2>Cast your vote!</h2>
-
+        <div id="button">
         <button type="button"
+            class="btn btn-primary"
+            id="button"
             ng-repeat="candidate in $ctrl.candidates"
             ng-click="$ctrl.onVote({ $candidate: candidate })">
             <span ng-bind="candidate.name"></span>
         </button>
+        </div>
     `
 });
 
@@ -141,14 +148,31 @@ app.component("itmResults", {
         candidates: "<"
     },
     controller: class { },
+    // template: `
+    //     <h2>Live Results</h2>
+    //     <ul>
+    //         <li ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
+    //             <span ng-bind="candidate.name"></span>
+    //             <strong ng-bind="candidate.votes"></strong>
+    //             <strong ng-bind="candidate.percentage"></strong>
+    //         </li>
+    //     </ul>
+    // `
     template: `
         <h2>Live Results</h2>
-        <ul>
-            <li ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
-                <span ng-bind="candidate.name"></span>
-                <strong ng-bind="candidate.votes"></strong>
-                <strong ng-bind="candidate.percentage"></strong>
-            </li>
-        </ul>
-    `
+        <table class="table table-striped table-hover" id="table">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Votes</th>
+            <th scope="col">Percent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
+            <td><span ng-bind="candidate.name"></span></td>
+            <td><strong ng-bind="candidate.votes"></strong></td>
+            <td><strong ng-bind="candidate.percentage"></strong></td>
+            </tr>
+            `
 });

@@ -1,4 +1,4 @@
-# ITM21st Code Challenge
+# Code Challenge
 
 ## Overview
 

@@ -3,9 +3,9 @@ const app = angular.module("Candidate.App", []);
 app.component("itmRoot", {
     controller: class {
         constructor() {
-            this.candidates = [{ name: "Puppies", votes: 0, percentage: '', color: "black", size: "large" },
-            { name: "Kittens", votes: 0, percentage: '', color: "brown", size: "medium" },
-            { name: "Gerbils", votes: 0, percentage: '', color: "grey", size: "tiny" }];
+            this.candidates = [{ name: "Puppies", votes: 0, percentage: '', color: "black", description: "cute" },
+            { name: "Kittens", votes: 0, percentage: '', color: "brown", description: "sleepy" },
+            { name: "Gerbils", votes: 0, percentage: '', color: "grey", description: "tiny" }];
         }
 
         onVote(candidate) {
@@ -83,7 +83,7 @@ app.component("itmManagement", {
                 votes: 0,
                 percentage: '',
                 color: '',
-                size: ''
+                description: ''
             };
         }
 
@@ -95,7 +95,7 @@ app.component("itmManagement", {
                 votes: 0,
                 percentage: '',
                 color: '',
-                size: ''
+                description: ''
             };
         }
 
@@ -115,8 +115,8 @@ app.component("itmManagement", {
             <input type="text" ng-model="$ctrl.newCandidate.name" required>
             <label>Color</label>
             <input type="text" ng-model="$ctrl.newCandidate.color" required>
-            <label>Size</label>
-            <input type="text" ng-model="$ctrl.newCandidate.size" required>
+            <label>Description</label>
+            <input type="text" ng-model="$ctrl.newCandidate.description" required>
             <button type="submit" class="btn btn-secondary">Add</button>
         </form>
         
@@ -164,7 +164,7 @@ app.component("itmResults", {
             <tr>
             <th scope="col">Name</th>
             <th scope="col">Color</th>
-            <th scope="col">Size</th>
+            <th scope="col">Description</th>
             <th scope="col">Votes</th>
             <th scope="col">Percentage of Total</th>
             </tr>
@@ -173,7 +173,7 @@ app.component("itmResults", {
             <tr ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
             <td><span ng-bind="candidate.name"></span></td>
             <td><span ng-bind="candidate.color"></span></td>
-            <td><span ng-bind="candidate.size"></span></td>
+            <td><span ng-bind="candidate.description"></span></td>
             <td><strong ng-bind="candidate.votes"></strong></td>
             <td><strong ng-bind="candidate.percentage"></strong></td>
             </tr>
